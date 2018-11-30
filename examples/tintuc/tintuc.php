@@ -7,8 +7,8 @@
  */
 require "connect.php";
 require "simple_html_dom.php";
-$html=file_get_html("https://www.24h.com.vn/suc-khoe-doi-song-c62.html");
-$tin_sk=$html->find("span.nwsTit a");
+$html=file_get_html("https://www.24h.com.vn/tin-tuc-suc-khoe-c683.html");
+$tin_sk=$html->find("div.hotnew span.nwsTit a");
 
 foreach ($tin_sk as $tin) {
     $tieude=$tin->innertext;
@@ -16,17 +16,25 @@ foreach ($tin_sk as $tin) {
     $html_chitiet = file_get_html("$link");
     $tin_chitiet=$html_chitiet->find("article.nwsHt p");
     /*echo $html;*/
-    $noidung="";
+    $noidung="<p>";
     foreach ($tin_chitiet as $key) {
+        if(!empty($key->plaintext)) {
+            $noidung .= "$key->plaintext";
+            $noidung .= "</p> <p>";
 
-     /*   echo $key->innertext;*/
-        $noidung.="$key->innertext";
+        }
 
     }
-
+    $tieude=str_replace("&#39;","'",$tieude);
+    $link=str_replace("&#39;","'",$link);
+    $noidung=str_replace("&#39;","'",$noidung);
+    $tieude=str_replace("&#34;","",$tieude);
+    $link=str_replace("&#34;","",$link);
+    $noidung=str_replace("&#34;","",$noidung);
     $sql = "INSERT INTO tintuc (tieude, link, noidung)
-VALUES ('".$tieude."','".$link."', '".$noidung."')";
+VALUES ('".$tieude."','".$link."', '".$noidung."')" ;
     echo $sql;
+    echo"============================================================================================================";
     $result = $conn -> query($sql);
 
 }
