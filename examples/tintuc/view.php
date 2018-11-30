@@ -10,8 +10,8 @@ $result = $conn->query($sql);
 
 <head>
     <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="../assets/img/favicon.ico">
+    <link rel="apple-touch-icon" sizes="76x76" href="../../assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="../../assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>Quản lý bệnh nhân</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
@@ -19,10 +19,10 @@ $result = $conn->query($sql);
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
     <!-- CSS Files -->
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="../assets/css/light-bootstrap-dashboard.css?v=2.0.1" rel="stylesheet" />
+    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../assets/css/light-bootstrap-dashboard.css?v=2.0.1" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="../assets/css/demo.css" rel="stylesheet" />
+    <link href="../../assets/css/demo.css" rel="stylesheet" />
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
@@ -67,31 +67,31 @@ $result = $conn->query($sql);
 -->
         <div class="sidebar-wrapper">
             <div class="logo">
-                <a href="./benhnhan.php" class="simple-text">
+                <a href="../benhnhan.php" class="simple-text">
                     Nhóm 5
                 </a>
             </div>
             <ul class="nav">
                 <li>
-                    <a class="nav-link" href="./benhnhan.php">
+                    <a class="nav-link" href="../benhnhan.php">
                         <i class="nc-icon nc-notes"></i>
                         <p>Bệnh nhân</p>
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link" href="./bacsi.php">
+                    <a class="nav-link" href="../bacsi.php">
                         <i class="nc-icon nc-paper-2"></i>
                         <p>Bác sĩ</p>
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link" href="./dungcuyte.php">
+                    <a class="nav-link" href="../dungcuyte.php">
                         <i class="nc-icon nc-paper-2"></i>
                         <p>Dụng Cụ Y Tế</p>
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link" href="./tintuc.php">
+                    <a class="nav-link" href="view.php">
                         <i class="nc-icon nc-paper-2"></i>
                         <p>tintuc</p>
                     </a>
@@ -115,7 +115,7 @@ $result = $conn->query($sql);
                 <div class="collapse navbar-collapse justify-content-end" id="navigation">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php">
+                            <a class="nav-link" href="../index.php">
                                 <button class="btn btn-primary" >Log out</button>
                             </a>
                         </li>
@@ -153,7 +153,7 @@ $result = $conn->query($sql);
                                         </label>
                                     </form>
                                 </div>
-                                <a href="thembenhnhan.php" class="btn btn-primary">Thêm</a>
+                                <a href="tintuc.php." class="btn btn-primary">Thêm</a>
                             </div>
                             <div class="card-body table-full-width table-responsive">
                                 <table class="table table-hover table-striped">
@@ -161,8 +161,7 @@ $result = $conn->query($sql);
                                     <th>ID</th>
                                     <th>Tiêu Đề</th>
                                     <th>Link</th>
-                                    <th>NộiDung</th>
-
+                                    <th>Chức năng</th>
                                     </thead>
                                     <tbody>
                                     <?php
@@ -170,9 +169,11 @@ $result = $conn->query($sql);
                                         while ($row = $result -> fetch_assoc()){ ?>
                                             <tr>
                                                 <td><?php echo $row['id']; ?></td>
-                                                <td><?php echo $row['tieude']; ?> </a></td>
+                                                <td><a href="tintucchitiet.php?id=<?php echo $row['id']; ?>"> <?php echo $row['tieude']; ?> </a></td>
                                                 <td><?php echo $row['link']?></td>
-                                                <td><?php echo $row['noidung']?></td>
+                                                <td>
+                                                    <a href="xoatintuc.php?id=<?php echo $row['id']; ?>" class="au-btn--submit remove">Xóa</a></td>
+                                            </tr>
                                             </tr>
                                         <?php }
                                     }
@@ -190,7 +191,7 @@ $result = $conn->query($sql);
                 <nav>
                     <ul class="footer-menu">
                         <li>
-                            <a href="./benhnhan.php">
+                            <a href="../benhnhan.php">
                                 Home
                             </a>
                         </li>
@@ -312,21 +313,21 @@ $result = $conn->query($sql);
 </script>
 </body>
 <!--   Core JS Files   -->
-<script src="../assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
-<script src="../assets/js/core/popper.min.js" type="text/javascript"></script>
-<script src="../assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+<script src="../../assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
+<script src="../../assets/js/core/popper.min.js" type="text/javascript"></script>
+<script src="../../assets/js/core/bootstrap.min.js" type="text/javascript"></script>
 <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
-<script src="../assets/js/plugins/bootstrap-switch.js"></script>
+<script src="../../assets/js/plugins/bootstrap-switch.js"></script>
 <!--  Google Maps Plugin    -->
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 <!--  Chartist Plugin  -->
-<script src="../assets/js/plugins/chartist.min.js"></script>
+<script src="../../assets/js/plugins/chartist.min.js"></script>
 <!--  Notifications Plugin    -->
-<script src="../assets/js/plugins/bootstrap-notify.js"></script>
+<script src="../../assets/js/plugins/bootstrap-notify.js"></script>
 <!-- Control Center for Light Bootstrap Dashboard: scripts for the example pages etc -->
-<script src="../assets/js/light-bootstrap-dashboard.js?v=2.0.1" type="text/javascript"></script>
+<script src="../../assets/js/light-bootstrap-dashboard.js?v=2.0.1" type="text/javascript"></script>
 <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
-<script src="../assets/js/demo.js"></script>
+<script src="../../assets/js/demo.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         $("a.remove").on('click', function (e) {

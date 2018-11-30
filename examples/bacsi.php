@@ -70,6 +70,12 @@ $result = $conn->query($sql);
                         <p>Dụng Cụ Y Tế</p>
                     </a>
                 </li>
+                <li>
+                    <a class="nav-link" href="tintuc/view.php">
+                        <i class="nc-icon nc-paper-2"></i>
+                        <p>tintuc</p>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

@@ -25,16 +25,18 @@ foreach ($tin_sk as $tin) {
         }
 
     }
-    $tieude=str_replace("&#39;","'",$tieude);
+    /*$tieude=str_replace("&#39;","'",$tieude);
     $link=str_replace("&#39;","'",$link);
     $noidung=str_replace("&#39;","'",$noidung);
     $tieude=str_replace("&#34;","",$tieude);
     $link=str_replace("&#34;","",$link);
-    $noidung=str_replace("&#34;","",$noidung);
+    $noidung=str_replace("&#34;","",$noidung);*/
     $sql = "INSERT INTO tintuc (tieude, link, noidung)
-VALUES ('".$tieude."','".$link."', '".$noidung."')" ;
-    echo $sql;
+VALUES ('".$tieude."','".$link."', '".$noidung."')
+" ;
+    echo  $sql;
     echo"============================================================================================================";
     $result = $conn -> query($sql);
 
 }
+?>
