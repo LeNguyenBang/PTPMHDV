@@ -31,12 +31,20 @@ foreach ($tin_sk as $tin) {
     $tieude=str_replace("&#34;","",$tieude);
     $link=str_replace("&#34;","",$link);
     $noidung=str_replace("&#34;","",$noidung);*/
-    $sql = "INSERT INTO tintuc (tieude, link, noidung)
+    $check="SELECT * FROM tintuc WHERE link='".$link."'";
+    $result_check = $conn->query($check);
+    if ($result_check->num_rows == 0) {
+     /*   while ($row = $result_check -> fetch_assoc()) {*/
+            $sql = "INSERT INTO tintuc (tieude, link, noidung)
 VALUES ('".$tieude."','".$link."', '".$noidung."')
 " ;
-    echo  $sql;
-    echo"============================================================================================================";
-    $result = $conn -> query($sql);
+
+            echo  $sql;
+            echo"============================================================================================================";
+            $result = $conn -> query($sql);
+        }
+       /* }*/
+
 
 }
 ?>
