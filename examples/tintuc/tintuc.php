@@ -11,6 +11,7 @@ $html=file_get_html("https://www.24h.com.vn/tin-tuc-suc-khoe-c683.html");
 $tin_sk=$html->find("div.hotnew span.nwsTit a");
 
 foreach ($tin_sk as $tin) {
+    $dem=0;
     $tieude=$tin->innertext;
     $link = $tin->href;
     $html_chitiet = file_get_html("$link");
@@ -34,17 +35,23 @@ foreach ($tin_sk as $tin) {
     $check="SELECT * FROM tintuc WHERE link='".$link."'";
     $result_check = $conn->query($check);
     if ($result_check->num_rows == 0) {
-     /*   while ($row = $result_check -> fetch_assoc()) {*/
+        $dem++;
             $sql = "INSERT INTO tintuc (tieude, link, noidung)
-VALUES ('".$tieude."','".$link."', '".$noidung."')
-" ;
-
-            echo  $sql;
-            echo"============================================================================================================";
+VALUES ('".$tieude."','".$link."', '".$noidung."')" ;
             $result = $conn -> query($sql);
         }
-       /* }*/
-
 
 }
 ?>
+<?php
+    if ($dem!=0){
+    echo  "Các tin mới đã được cập nhật";?>
+
+    <a href="view.php" class="btn btn-primary">Trở về</a>
+    <?php }
+else
+{echo  "Không có tin nào mới";?>
+
+    <a href="view.php" class="btn btn-primary">Trở về</a>
+
+<?php }?>
