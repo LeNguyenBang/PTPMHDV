@@ -153,7 +153,7 @@ $result = $conn->query($sql);
                                         </label>
                                     </form>
                                 </div>
-                                <a href="tintuc.php." class="btn btn-primary">Thêm</a>
+                                <a href="tintuc.php" class="btn btn-primary">Thêm</a>
                             </div>
                             <div class="card-body table-full-width table-responsive">
                                 <table class="table table-hover table-striped">
